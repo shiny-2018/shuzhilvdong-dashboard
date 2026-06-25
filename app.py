@@ -284,3 +284,18 @@ with tab3:
                 .set_series_opts(label_opts=opts.LabelOpts(position="top", font_size=14, color="#333"))
             )
             st_echarts_native(bar_compare, height=400)
+# ==========================================
+# 1.5 强制隐藏 Streamlit 官方默认 UI 元素 (打造纯净前端)
+# ==========================================
+hide_streamlit_style = """
+    <style>
+    /* 隐藏右上角的全屏、部署和汉堡菜单 */
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    /* 隐藏底部的 Made with Streamlit 水印 */
+    footer {visibility: hidden;}
+    /* 隐藏顶部的 Share 按钮等辅助元素 */
+    .stDeployButton {display:none;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
