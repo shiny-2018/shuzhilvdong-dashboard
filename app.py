@@ -285,17 +285,25 @@ with tab3:
             )
             st_echarts_native(bar_compare, height=400)
 # ==========================================
-# 1.5 强制隐藏 Streamlit 官方默认 UI 元素 (打造纯净前端)
+# 1.5 强制隐藏 Streamlit 官方所有冗余 UI (终极纯净版)
 # ==========================================
 hide_streamlit_style = """
     <style>
-    /* 隐藏右上角的全屏、部署和汉堡菜单 */
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
-    /* 隐藏底部的 Made with Streamlit 水印 */
-    footer {visibility: hidden;}
-    /* 隐藏顶部的 Share 按钮等辅助元素 */
-    .stDeployButton {display:none;}
+    /* 隐藏右上角汉堡菜单 */
+    #MainMenu {visibility: hidden !important;}
+    
+    /* 隐藏顶部 Header (包含 Deploy 按钮等) */
+    header {visibility: hidden !important;}
+    
+    /* 隐藏底部 Made with Streamlit 水印 */
+    footer {visibility: hidden !important;}
+    
+    /* 核心杀手锏：强行隐藏右下角的 Streamlit 红色小船 Logo 徽章 */
+    .viewerBadge_container {display: none !important;}
+    .viewerBadge_link {display: none !important;}
+    
+    /* 隐藏偶尔会跳出来的全局部署按钮 */
+    .stDeployButton {display: none !important;}
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
